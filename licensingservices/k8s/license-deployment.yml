@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: license-deployment
+  labels:
+    app: license-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: license-app
+  template:
+    metadata:
+      labels:
+        app: license-app
+    spec:
+      containers:
+      - name: license-container
+        image: karuppusamy34/docker_repo:20202901115200
+        ports:
+            - containerPort: 8080
+        envFrom:
+            - configMapRef:
+                name: license-app-config

@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: license-service
+spec:
+  selector:
+    app: license-app
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 30011
